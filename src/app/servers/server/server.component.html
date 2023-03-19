@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="list-group">
+        <li *ngFor="let detail of serverList " class="list-group-item">
+            {{detail.name}} ({{detail.status}})
+            <hr/>
+            <button class="btn btn-secondary" (click)="onEdit(detail.id)">Edit Server</button>
+        </li>
+      </ul>
+    </div>
+</div>

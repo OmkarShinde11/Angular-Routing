@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        <ul class="list-group">
+            <!-- <li *ngFor="let details of serverList" class="list-group-item" [routerLink]="['/Servers', 10,'edit']" [queryParams]="{allowedit:'1'}" fragment="loading" >
+               {{details.name}}
+            </li> -->
+            <li *ngFor="let details of serverList" class="list-group-item" (click)="navigate1(details.id)" >
+                {{details.name}}
+             </li>
+            <!-- <li *ngFor="let details of serverList; let i=index" class="list-group-item" (click)="navigate(i)">
+                {{details.name}}
+             </li> -->
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        <router-outlet></router-outlet>
+        <!-- <app-edit-server></app-edit-server> -->
+        <hr/>
+        <!-- <app-server></app-server> -->
+    </div>
+</div>
