@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { ServerService } from 'src/app/Service/server.service';
 import { serverList } from '../serverList';
 
@@ -13,13 +13,18 @@ export class ServerComponent implements OnInit {
   constructor(private serverService:ServerService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-     let id= this.route.snapshot.params['id'];
-     id=Number(id);
-     console.log(id);
-    this.serverList=this.serverService.getServer(id);
-    console.log(this.serverList);
-    this.route.params.subscribe((params:Params)=>{
-      this.serverList=this.serverService.getServer(Number(params['id']));
+    //  let id= this.route.snapshot.params['id'];
+    //  id=Number(id);
+    //  console.log(id);
+    // this.serverList=this.serverService.getServer(id);
+    // console.log(this.serverList);
+    // this.route.params.subscribe((params:Params)=>{
+    //   this.serverList=this.serverService.getServer(Number(params['id']));
+    // })
+
+    this.route.data.subscribe((value:Data)=>{
+      this.serverList=value['server']
+      console.log(this.serverList)
     })
   }
   onEdit(id:number){

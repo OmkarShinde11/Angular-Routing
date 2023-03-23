@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ErrorComponent } from './error/error.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { DeactivateGuard } from './Guards/deactivate.guard';
@@ -8,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersComponent } from './servers/servers.component';
+import { ResolverService } from './Service/resolver.service';
 import { UserComponent } from './users/user/user.component';
 import { UsersComponent } from './users/users.component';
 
@@ -29,7 +31,8 @@ const routes: Routes = [
       },
       {
         path:':id',
-        component:ServerComponent
+        component:ServerComponent,
+        resolve:{server:ResolverService}
       }
     ]
   },
